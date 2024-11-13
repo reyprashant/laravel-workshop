@@ -80,21 +80,32 @@
     </style>
 </head>
 <body>
-    <form action="">
+    <form action="{{route('users.store')}}" method="post" id="create_user_form">
+        @csrf
         <h1>Create New User</h1>
         <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Your name" required><br>
+        <input type="text" name="name" placeholder="Your name" required><br>
         
         <label for="email">Email:</label>
-        <input type="text" id="email" placeholder="Your Email" required><br>
+        <input type="text" name="email" placeholder="Your Email" required><br>
         
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Password" required><br>
+        <input type="password" name="password" placeholder="Password" id="password" required><br>
         
         <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" placeholder="Confirm Password" required><br>
+        <input type="password" name="confirm-password" id="confirm_password" placeholder="Confirm Password" required><br>
         
         <input type="submit" value="Submit">
     </form>
+    <script>
+        document.getElementById('create_user_form').addEventListener('submit',(event)=>{
+            let password =document.getElementById('password').value
+            let confirm_password =document.getElementById('confirm_password').value
+            if(password != confirm_password){
+                event.preventDefault()
+                alert("Password and Confrim Password doesnot match")
+            }
+        })
+    </script>
 </body>
 </html>

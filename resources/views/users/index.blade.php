@@ -68,24 +68,36 @@
     </style>
 </head>
 <body>
+    <a href="{{route('users.create')}}">create new user</a>
     <table border="1px">
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Action</th>
         </tr>
+        @foreach ($users as $user )
         <tr>
-            <td>Prashant Adhikari</td>
-            <td>subash96240@gmail.com</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
             <td>
-                <a href="/show.blade.php">
-                    <button type="button">View</button>
-                </a>
-                <a href="/edit.blade.php">
-                    <button type="button" class="edit-button">Edit</button>
-                </a>
+                <a href="users/{{$user->id}}/edit">
+                    <button type="button">Edit</button>
+                </a><br>
+                <form action="{{route('users.destroy',$user->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button onclick="abc()" type="submit" class="edit-button">Delete</button>
+                </form>
+        
             </td>
         </tr>
+        @endforeach
+        
     </table>
+    <script>
+        function abc(){
+            alert("Data is deleted");
+        }
+    </script>
 </body>
 </html>

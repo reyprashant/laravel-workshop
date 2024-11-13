@@ -80,19 +80,21 @@
     </style>
 </head>
 <body>
-    <form action="">
+    <form action="{{route('users.update', $user -> id)}}" method="post" >
+    @csrf
+    @method('PUT')
         <h1>Edit Your User</h1>
         <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Your name" required><br>
+        <input type="text" name="name" value = "{{$user -> name}}" required><br>
         
         <label for="email">Email:</label>
-        <input type="text" id="email" placeholder="Your Email" required><br>
+        <input type="text" name="email" value = "{{$user -> email}}" required><br>
         
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Password" required><br>
+        <input type="password" name="password" value = "{{$user -> password}}" required><br>
         
         <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" placeholder="Confirm Password" required><br>
+        <input type="password" name="confirm-password" placeholder="Confirm Password" required><br>
         
         <input type="submit" value="Update">
     </form>
