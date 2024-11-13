@@ -1,21 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1 style="text-align: center;">Create New User</h1>
-    <form action="">
-        Name:<input type="text" placeholder="Your name"><br>
-        Email:<input type="text" placeholder="Your Email"><br>
-        Password<input type="password" placeholder="Password"><br>
-        Confirm Password<input type="password" placeholder="Confirm Password"><br>
-        <input type="submit" name="Submit">;
-    </form>
-</body>
-</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
