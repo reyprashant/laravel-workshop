@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -25,4 +26,5 @@ use App\Http\Controllers\StudentController;
 // Route::get('/contact',[WelcomeController::class,'meroContact']);
 // Route::get('/about',[WelcomeController::class,'aboutUs']);
 
-Route::get('/students',[StudentController::class,'getStudent']);
+// Route::get('/students',[StudentController::class,'getStudent']);
+Route::resource('users',UserController::class);
