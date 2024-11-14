@@ -67,20 +67,29 @@
         @csrf
         <h1>Create New User</h1>
         <label for="name">Name:</label>
-        <input type="text" name="name" placeholder="Your name" required><br>
+        <input type="text" name="name" placeholder="Your name" ><br>
+        @error('name')
+        <div style="color:red">{{$message}}</div>
+        @enderror
         
         <label for="email">Email:</label>
-        <input type="text" name="email" placeholder="Your Email" required><br>
-        
+        <input type="text" name="email" placeholder="Your Email"><br>
+        @error('email')
+        <div style="color:red">{{$message}}</div>
+        @enderror
         <label for="password">Password:</label>
-        <input type="password" name="password" placeholder="Password" id="password" required><br>
-        
+        <input type="password" name="password" placeholder="Password" id="password" ><br>
+        @error('password')
+        <div style="color:red">{{$message}}</div>
+        @enderror
         <label for="confirm-password">Confirm Password:</label>
-        <input type="password" name="confirm-password" id="confirm_password" placeholder="Confirm Password" required><br>
-        
+        <input type="password" name="password_confirmation" id="confirm_password" placeholder="Confirm Password" ><br>
+        @error('password_confirmation')
+        <div style="color:red">{{$message}}</div>
+        @enderror
         <input type="submit" value="Submit">
     </form>
-    <script>
+    <!-- <script>
         document.getElementById('create_user_form').addEventListener('submit',(event)=>{
             let password =document.getElementById('password').value
             let confirm_password =document.getElementById('confirm_password').value
@@ -89,6 +98,6 @@
                 alert("Password and Confrim Password doesnot match")
             }
         })
-    </script>
+    </script> -->
 </body>
 </html>

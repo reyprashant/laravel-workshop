@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index',['users'=> $users]);
+        $users = User::all();//user::query()->get();        //here the users is collection a bit different than array
+        // dd($users); this is for the testting ppurpose
+        return view('users.index',['users'=> $users]);//compact('users') yo function use garey pani hunxa
     }
 
     /**
@@ -27,14 +29,24 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $user = new User();
+        // dd($request);
+
+        // User:query->create(
+        //     'name' => $request -> name; //mass fillable way yo pani use garna milxa 
+        // )
+        $user = new User();//this is normal case mathy ko chai mass fillable way ho mathy ko more precise
         $user ->name = $request -> name;
         $user ->email = $request -> email;
         $user ->password = $request -> password;
         $user->save();
         return redirect()->route('users.index');
+        // $request -> validate([
+        //     'name' => 'required|max:50',
+        //     'email'=>'required|max:100',
+        //     'password'=>'required|min:8|confirmed',
+        // ]);
     }
 
     /**
@@ -48,9 +60,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id)//baracket ma(users $user) yo chai dependecy ma sabai aafai gardinxa
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);//$user = user::query()->find($id); dependency ko way use garyo vani yo line hani rakhnu pardaina
         return view('users.edit',['user'=> $user]);
     }
 
