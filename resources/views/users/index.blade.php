@@ -86,7 +86,7 @@
     </style>
 </head>
 <body>
-    <table border="1px">
+    <table border="1px" >
         <tr>
             <th>S.No</th>
             <th>Name</th>
@@ -100,7 +100,7 @@
             <td>{{$user->email}}</td>
             <td>
                 <a href="users/{{$user->id}}/edit">
-                    <button type="button">Edit</button>
+                    <button type="button" >Edit</button>
                 </a><br>
                 <form action="{{route('users.destroy', $user->id)}}" method="POST" style="display: inline;">
                     @csrf
